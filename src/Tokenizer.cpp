@@ -6,6 +6,7 @@ using namespace std;
 
 Tokenizer::Tokenizer(void)
 {
+
 }
 
 Tokenizer::~Tokenizer(void)
@@ -55,7 +56,7 @@ void Tokenizer::skip_whitespace() {
   }
 }
 
-Token Tokenizer::get_token() {
+Tokenizer::Token Tokenizer::get_token() {
 	char c;
 	Token token = {Token_type::TOKEN_INVALID, ""};
 	while(!file.eof()) {
@@ -174,19 +175,10 @@ string Tokenizer::read_keyword() {
 }
 
 void Tokenizer::read_vec3(Vec3& vec) {
-	bool swizzle = true;
 	read_lparen();
-	if(!swizzle) {
-		vec.x = read_float();
-		vec.y = read_float();
-		vec.z = read_float();
-	}
-	else {
-		vec.z = read_float();
-		vec.x = read_float();
-		vec.y = read_float();
-	}
-
+	vec.x = read_float();
+	vec.y = read_float();
+	vec.z = read_float();
 	read_rparen();
 }
 
@@ -199,7 +191,10 @@ void Tokenizer::read_quat(Quat& quat) {
 void Tokenizer::read_string(string& str) {
 	Token token = get_token();
 	if(token.t != Token_type::TOKEN_STRING) {
-		//exception
+		stringstream error;
+		error << "expected to read string" << endl;
+		error << token_type(token.t) << ": " << token.str << endl;
+		throw error.str();
 	}
 	str = token.str;
 }
@@ -207,27 +202,64 @@ void Tokenizer::read_string(string& str) {
 void Tokenizer::read_lparen() {
 	Token token = get_token();
 	if(token.t != Token_type::TOKEN_LPAREN) {
-		//exception
+		stringstream error;
+		error << "expected to read lparen" << endl;
+		error << token_type(token.t) << ": " << token.str << endl;
+		throw error.str();
 	}
 }
 
 void Tokenizer::read_rparen() {
 	Token token = get_token();
 	if(token.t != Token_type::TOKEN_RPAREN) {
-		//exception
+		stringstream error;
+		error << "expected to read rparen" << endl;
+		error << token_type(token.t) << ": " << token.str << endl;
+		throw error.str();
 	}
 }
 
 void Tokenizer::read_lbrace() {
 	Token token = get_token();
 	if(token.t != Token_type::TOKEN_LBRACE) {
-		//exception
+		stringstream error;
+		error << "expected to read lbrace" << endl;
+		error << token_type(token.t) << ": " << token.str << endl;
+		throw error.str();
 	}
 }
 
 void Tokenizer::read_rbrace() {
 	Token token = get_token();
 	if(token.t != Token_type::TOKEN_RBRACE) {
-		//exception
+		stringstream error;
+		error << "expected to read rbrace" << endl;
+		error << token_type(token.t) << ": " << token.str << endl;
+		throw error.str();
+	}
+}
+
+string Tokenizer::token_type(Token_type::Enum t) {
+	switch(t) {
+		case Token_type::TOKEN_KEYWORD:
+			return "TOKEN_KEYWORD"; break;
+		case Token_type::TOKEN_INT:
+			return "TOKEN_INT"; break;
+		case Token_type::TOKEN_FLOAT:
+			return "TOKEN_FLOAT"; break;
+		case Token_type::TOKEN_STRING:
+			return "TOKEN_STRING"; break;
+		case Token_type::TOKEN_LBRACE:
+			return "TOKEN_LBRACE"; break;
+		case Token_type::TOKEN_RBRACE:
+			return "TOKEN_RBRACE"; break;
+		case Token_type::TOKEN_LPAREN:
+			return "TOKEN_LPAREN"; break;
+		case Token_type::TOKEN_RPAREN:
+			return "TOKEN_RPAREN"; break;
+		case Token_type::TOKEN_INVALID:
+			return "TOKEN_INVALID"; break;
+		default:
+			return "BAD TOKEN!";
 	}
 }

@@ -38,7 +38,7 @@ bool light_move = true;
 float x_rot, y_rot;
 
 
-float zh=90.0;        //  Light azimuth
+float zh=0.0;        //  Light azimuth
 float Ylight=120;   //  Light elevation
 
 int frame = 0;
@@ -67,9 +67,7 @@ int init(void)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	md5.Load("models/hellknight/hellknight.md5mesh");
-	md5.Build(0);
-	//md5.LoadAnimation("idle2.md5anim");
-	
+	md5.LoadAnimation("models/hellknight/idle2.md5anim");
 
 	prog = CreateShaderProg("src/shaders/bump.vert", "src/shaders/bump.frag");
 	quad = gluNewQuadric();
@@ -133,12 +131,15 @@ void display() {
 	show_lights();
 	
 	glUseProgram(prog);
+	glRotatef(-90, 1.0, 0.0, 0.0);
+	glRotatef(-90, 0.0, 0.0, 1.0);
 	md5.Draw();
 	glUseProgram(0);
 	glDisable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
 	
-	//md5.Draw_Skeleton();
+	//md5.Draw_Bounds(frame);
+	//md5.Draw_Skeleton(frame);
 	//md5.Draw_Vectors();
 	SDL_GL_SwapBuffers();
 }
@@ -211,12 +212,12 @@ int main(int argc, char* argv[]) {
 				}
 			}
 			if(light_move==true)
-				zh += 1.0;
+				zh += 3.0;
 			//std::cout << zh << std::endl;
 			if(zh > 360.0) {
 				zh = 0.0;
 			}
-			//md5.Build(frame++);
+			md5.Build(frame++);
 			//std::cout << "frame: " << frame << std::endl;
 			if(frame >= 120) frame = 0;
 			display();

@@ -41,7 +41,7 @@ void Mesh::build_normals() {
 	}
 }
 
-void Mesh::build_vertices(std::vector<Joint> &joint_list) {
+void Mesh::build_vertices(Joint* joints) {
 	for(size_t i = 0; i < verts.size(); i++) {
 		Vertex& vert = verts[i];
 		Vec3& vector = vert.pos;
@@ -49,26 +49,12 @@ void Mesh::build_vertices(std::vector<Joint> &joint_list) {
 
 		for(size_t j = 0; j < vert.weight_count; j++) {
 			const Weight& weight = weights[vert.weight_index + j];
-			const Joint& joint = joint_list[weight.joint];
+			const Joint& joint = joints[weight.joint];
 
 			Vec3 result = joint.quat * weight.pos;
 			vector += (joint.origin + result) * weight.bias;
 		}
 	}
-}
-
-std::string Mesh::read_shader() {
-	std::string path = this->shader;
-	//#ifdef _WIN32
-	//int pos = path.find("/");
-	//while(pos > 0) {
-	//	path.replace(pos, 1, "\\");
-	//	path.insert(pos, "\\");
-	//	pos = path.find("/");
-	//}
-	//#endif
-	
-	return path;
 }
 
 void Mesh::Draw() {
@@ -144,9 +130,8 @@ void Mesh::Draw_Vectors() {
 
 void Mesh::load_textures() {
 	using namespace std;
-	string base_path = read_shader();
-	string texture_path = base_path; texture_path.append(".tga");
-	string normal_path = base_path; normal_path.append("_local.tga");
+	string texture_path = this->shader; texture_path.append(".tga");
+	string normal_path = this->shader; normal_path.append("_local.tga");
 	
 	texture = load_texture(texture_path);
 	normal_map = load_texture(normal_path);

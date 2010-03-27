@@ -26,14 +26,15 @@ public:
 	std::vector<Weight> weights;
 	unsigned int texture;
 	unsigned int normal_map;
-	void build_vertices(std::vector<Joint> &joint_list);
+	void build_vertices(Joint* joints);
 	void build_normals();
-	std::string read_shader();
 	void Draw();
 	void Draw_Vectors();
 	void load_textures();
 	unsigned int load_texture(std::string filename);
-	//MD5* md5;
+	int num_verts;
+	int num_tris;
+	int num_weights;
 };
 
 extern int prog;
