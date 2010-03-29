@@ -15,7 +15,7 @@ endif
 # object files have corresponding source files
 ODIR= Debug
 SRCDIR= src
-OBJS= main.o MD5.o Mesh.o Tokenizer.o GLee.o Camera.o Engine.o Timer.o Shader.o Animation.o
+OBJS= main.o MD5.o Mesh.o Tokenizer.o GLee.o Camera.o Engine.o Timer.o Shader.o Animation.o MD5_Parser.o Anim_Parser.o
 _OBJ = $(patsubst %,$(ODIR)/%,$(OBJS))
 CXX=g++
 COMPILER_FLAGS= -Wall
