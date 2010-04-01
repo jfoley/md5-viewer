@@ -12,6 +12,9 @@
     #include <OpenGL/glext.h>
 	const char* directory_seperator = "/";
 	const char* model = "hellknight";
+#else
+	#define __LINUX__
+	#include <GL/glew.h>
 #endif
 
 #include <math.h>
@@ -187,6 +190,9 @@ void handle_key(SDL_KeyboardEvent* event) {
 }
 
 int main(int argc, char* argv[]) {
+	#ifdef __LINUX__
+	glewInit();
+	#endif
 	try {
 		init();
 

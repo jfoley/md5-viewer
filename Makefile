@@ -7,7 +7,7 @@ ifeq ($(MACHINE),Darwin)
     SDL_LIB= `sdl-config --libs` -framework SDL_image
 else
     OPENGL_INC= -I/usr/X11R6/include
-    OPENGL_LIB= -I/usr/lib64 -lGL -lGLU
+    OPENGL_LIB= -I/usr/lib64 -lGL -lGLU -lGLEW -lSDL_image
     SDL_INC= `sdl-config --cflags`
     SDL_LIB= `sdl-config --libs`
 endif
