@@ -80,15 +80,16 @@ void MD5_Parser::read_mesh() {
 	read_lbrace();
 	Mesh mesh;
 	string keyword = read_keyword();
-	int verts_read = 0;
-	int tris_read = 0;
-	int weights_read = 0;
+	int verts_read = -1;
+	int tris_read = -1;
+	int weights_read = -1;
 	while(!keyword.empty()) {
 		if(keyword.compare("shader") == 0) {
 			read_string(mesh.shader);
 		}
 		else if(keyword.compare("numverts") == 0) {
 			mesh.num_verts = read_int();
+			verts_read = 0;
 		}
 		else if(keyword.compare("vert") == 0) {
 			if(verts_read > mesh.num_verts) {
@@ -101,6 +102,7 @@ void MD5_Parser::read_mesh() {
 		}
 		else if(keyword.compare("numtris") == 0) {
 			mesh.num_tris = read_int();
+			tris_read = 0;
 		}
 		else if(keyword.compare("tri") == 0) {
 			if(tris_read > mesh.num_tris) {
@@ -113,6 +115,7 @@ void MD5_Parser::read_mesh() {
 		}
 		else if(keyword.compare("numweights") == 0) {
 			mesh.num_weights = read_int();
+			weights_read = 0;
 		}
 		else if(keyword.compare("weight") == 0) {
 			if(weights_read > mesh.num_weights) {

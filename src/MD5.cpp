@@ -25,6 +25,8 @@ void MD5::LoadAnimation(string filename) {
 	anim.Load(filename.c_str());
 	this->animations.push_back(anim);
 	current_anim = &animations.back();
+	current_frame = 0;
+	anim_index = this->animations.size() - 1;
 }
 
 void MD5::Build(int frame) {
@@ -60,4 +62,19 @@ void MD5::Draw_Vectors() {
 	for(size_t i = 0; i < meshes.size(); i++) {
 		meshes[i].Draw_Vectors();
 	}
+}
+
+void MD5::Next_Frame() {
+	current_frame++;
+	if(current_frame >= this->current_anim->Get_numFrames())
+		current_frame = 0;
+	this->Build(current_frame);
+}
+
+void MD5::Next_Animation() {
+	anim_index++;
+	if(anim_index >= this->animations.size())
+		anim_index = 0;
+	this->current_anim = &this->animations[anim_index];
+	current_frame = 0;
 }

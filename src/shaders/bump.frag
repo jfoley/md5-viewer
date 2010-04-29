@@ -43,7 +43,7 @@ void main()
 			gl_FragColor +=	specularMaterial * specularLight * shininess ;				
 
 		}
-
+	
 		//gl_FragColor +=	ambientLight;
 	//gl_FragColor = vec4(vec3(dot (lightDir, normal)), 0.0);
 	//gl_FragColor = texture2D (textureMap, gl_TexCoord[0].st);

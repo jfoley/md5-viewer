@@ -20,8 +20,12 @@ public:
 	void Draw();
 	void Draw_Vectors();
 	void Draw_Skeleton(int frame);
+	void Next_Frame();
+	void Next_Animation();
 
 protected:
+	int anim_index;
+	int current_frame;
 	int num_joints;
 	int num_meshes;
 	std::vector<Joint> joints;

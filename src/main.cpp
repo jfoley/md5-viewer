@@ -1,17 +1,12 @@
+#ifdef __APPLE__
+	#include <OpenGL/glu.h>
+    #include <OpenGL/glext.h>
+#endif
+
 #ifdef _WIN32
 	#include <windows.h>
 	#include "GL\glee.h"
 	#include "GL\glu.h"
-	
-	const char* directory_seperator = "\\";
-	const char* model = "hellknight";
-#endif
-
-#ifdef __APPLE__
-	#include <OpenGL/glu.h>
-    #include <OpenGL/glext.h>
-	const char* directory_seperator = "/";
-	const char* model = "hellknight";
 #endif
 
 #include <math.h>
@@ -35,13 +30,13 @@ bool left_down = false;
 bool right_down = false;
 bool light_move = true;
 
+bool show_help = false;
 float x_rot, y_rot;
 
 
 float zh=0.0;        //  Light azimuth
 float Ylight=120;   //  Light elevation
 
-int frame = 0;
 int prog, vert, frag = 0;
 
 MD5 md5;
@@ -68,6 +63,7 @@ int init(void)
 	glLoadIdentity();
 	md5.Load("models/hellknight/hellknight.md5mesh");
 	md5.LoadAnimation("models/hellknight/idle2.md5anim");
+	md5.LoadAnimation("models/hellknight/attack2.md5anim");
 
 	prog = CreateShaderProg("src/shaders/bump.vert", "src/shaders/bump.frag");
 	quad = gluNewQuadric();
@@ -177,12 +173,14 @@ void handle_key(SDL_KeyboardEvent* event) {
 	
 	switch(event->type) {
 		case SDL_KEYDOWN:
-			std::cout << "key pressed: " << event->keysym.sym << std::endl;
 			if(event->keysym.sym==SDLK_l) {
-				std::cout << light_move << std::endl;
 				light_move = !light_move;
 			}
+			if(event->keysym.sym==SDLK_n) {
+				md5.Next_Animation();
+			}
 			break;
+
 	}
 }
 
@@ -217,9 +215,7 @@ int main(int argc, char* argv[]) {
 			if(zh > 360.0) {
 				zh = 0.0;
 			}
-			md5.Build(frame++);
-			//std::cout << "frame: " << frame << std::endl;
-			if(frame >= 120) frame = 0;
+			md5.Next_Frame();
 			display();
 			if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND )
 			{
