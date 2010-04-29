@@ -185,6 +185,9 @@ void handle_key(SDL_KeyboardEvent* event) {
 }
 
 int main(int argc, char* argv[]) {
+	#ifdef __LINUX__
+	glewInit();
+	#endif
 	try {
 		init();
 

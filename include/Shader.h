@@ -8,6 +8,8 @@
 #ifdef __APPLE__
 	#include <OpenGL/glu.h>
     #include <OpenGL/glext.h>
+#else
+	#include <GL/glew.h>
 #endif
 
 #include <stdio.h>

@@ -7,7 +7,7 @@ ifeq ($(MACHINE),Darwin)
     SDL_LIB= `sdl-config --libs` -framework SDL_image
 else
     OPENGL_INC= -I/usr/X11R6/include
-    OPENGL_LIB= -I/usr/lib64 -lGL -lGLU
+    OPENGL_LIB= -I/usr/lib64 -lGL -lGLU -lGLEW -lSDL_image
     SDL_INC= `sdl-config --cflags`
     SDL_LIB= `sdl-config --libs`
 endif
@@ -15,7 +15,7 @@ endif
 # object files have corresponding source files
 ODIR= Debug
 SRCDIR= src
-OBJS= main.o MD5.o Mesh.o Tokenizer.o GLee.o Camera.o Engine.o Timer.o Shader.o Animation.o
+OBJS= main.o MD5.o Mesh.o Tokenizer.o GLee.o Camera.o Engine.o Timer.o Shader.o Animation.o MD5_Parser.o Anim_Parser.o
 _OBJ = $(patsubst %,$(ODIR)/%,$(OBJS))
 CXX=g++
 COMPILER_FLAGS= -Wall

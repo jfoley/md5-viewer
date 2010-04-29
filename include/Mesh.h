@@ -10,8 +10,10 @@
 	#include <SDL_image/SDL_image.h>
 	#include <OpenGL/glu.h>
     #include <OpenGL/glext.h>
+#else
+	#include "SDL/SDL_image.h"
+	#include <GL/glew.h>
 #endif
-
 
 #include <string>
 #include <vector>
