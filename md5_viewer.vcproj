@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\include"
+				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\boost\boost_1_42&quot;;.\include"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -59,6 +59,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="opengl32.lib sdl.lib sdlmain.lib sdl_image.lib glew32.lib glee.lib glu32.lib"
+				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\boost\boost_1_42\stage\lib&quot;"
 				IgnoreDefaultLibraryNames="libc.lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -198,6 +199,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\Model_Manager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\Renderer.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\Shader.cpp"
 				>
 			</File>
@@ -256,7 +265,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\include\Model_Manager.h"
+				>
+			</File>
+			<File
 				RelativePath=".\include\Quat.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\Renderer.h"
 				>
 			</File>
 			<File

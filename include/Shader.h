@@ -8,7 +8,9 @@
 #ifdef __APPLE__
 	#include <OpenGL/glu.h>
     #include <OpenGL/glext.h>
-#else
+#endif
+
+#ifdef __LINUX__
 	#include <GL/glew.h>
 #endif
 
