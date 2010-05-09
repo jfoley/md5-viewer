@@ -8,7 +8,11 @@ public:
 	~Camera(void);
 
 	Vec3 pos;
-	float angle_x, angle_y, angle_z;
+	Vec3 rot;
+
+	//float angle_x, angle_y, angle_z;
 	void move(Vec3 const &offset);
+	void rotate(Vec3 const &offset);
+
 	//void rotate(float x_angle, float y_angle, float z_angle);
 };

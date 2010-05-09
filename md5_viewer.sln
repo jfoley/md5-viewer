@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "md5_viewer", "md5_viewer.vcproj", "{B68C5856-58F6-46D7-8E9D-90EB416E684D}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MD5_Viewer_Install", "..\MD5_Viewer_Install\MD5_Viewer_Install.vdproj", "{EFEE4231-ACE2-4906-9F46-E7BAEF13ECC1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,8 +13,6 @@ Global
 		{B68C5856-58F6-46D7-8E9D-90EB416E684D}.Debug|Win32.Build.0 = Debug|Win32
 		{B68C5856-58F6-46D7-8E9D-90EB416E684D}.Release|Win32.ActiveCfg = Release|Win32
 		{B68C5856-58F6-46D7-8E9D-90EB416E684D}.Release|Win32.Build.0 = Release|Win32
-		{EFEE4231-ACE2-4906-9F46-E7BAEF13ECC1}.Debug|Win32.ActiveCfg = Debug
-		{EFEE4231-ACE2-4906-9F46-E7BAEF13ECC1}.Release|Win32.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

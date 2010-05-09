@@ -1,9 +1,12 @@
 #include "MD5.h"
 using namespace std;
 
-//MD5::MD5() {
-//
-//}
+MD5::MD5() {
+	this->anim_index = -1;
+	this->current_frame = -1;
+	this->num_joints = -1;
+	this->num_meshes = -1;
+}
 
 //MD5::~MD5(void)
 //{
@@ -24,26 +27,26 @@ void MD5::LoadAnimation(string filename) {
 	Animation anim;
 	anim.Load(filename.c_str());
 	this->animations.push_back(anim);
-	current_anim = &animations.back();
+	anim_index = animations.size() - 1;
 	current_frame = 0;
-	anim_index = this->animations.size() - 1;
 }
 
 void MD5::Build(int frame) {
 	for(size_t i = 0; i < 1; i++) {
-		meshes[i].build_vertices(current_anim->Get_Frame(frame));
+		meshes[i].build_vertices(current_anim()->Get_Frame(frame));
 		meshes[i].build_normals();
 	}
 }
 
-void MD5::Draw() {
-	meshes[0].Draw();
+void MD5::Draw(int prog) {
+	meshes[0].Draw(prog);
 }
 
-void MD5::Draw_Skeleton(int frame) {
-	//vector<Joint>& joints = this->joints;
-	Joint* joints = this->animations[0].Get_Frame(frame);
-	
+void MD5::Draw_Skeleton() {
+	Joint* joints = current_anim()->Get_Frame(this->current_frame);
+
+	glDisable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
 	glBegin(GL_LINES);
 	for(size_t i = 0; i < this->num_joints; i++) {
 		Joint& j = joints[i];
@@ -66,15 +69,16 @@ void MD5::Draw_Vectors() {
 
 void MD5::Next_Frame() {
 	current_frame++;
-	if(current_frame >= this->current_anim->Get_numFrames())
+	if(current_frame >= this->current_anim()->Get_numFrames()) {
 		current_frame = 0;
+	}
 	this->Build(current_frame);
 }
 
 void MD5::Next_Animation() {
 	anim_index++;
-	if(anim_index >= this->animations.size())
+	if(anim_index >= this->animations.size()) {
 		anim_index = 0;
-	this->current_anim = &this->animations[anim_index];
+	}
 	current_frame = 0;
 }

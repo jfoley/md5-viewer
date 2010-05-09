@@ -13,3 +13,7 @@ Camera::~Camera(void)
 void Camera::move(Vec3 const &offset) {
 	pos += offset;
 }
+
+void Camera::rotate(Vec3 const &offset) {
+	rot += offset;
+}

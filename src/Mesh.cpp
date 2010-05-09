@@ -57,7 +57,7 @@ void Mesh::build_vertices(Joint* joints) {
 	}
 }
 
-void Mesh::Draw() {
+void Mesh::Draw(int prog) {
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture( GL_TEXTURE_2D, texture );
 	glActiveTexture(GL_TEXTURE1);

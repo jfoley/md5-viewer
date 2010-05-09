@@ -3,21 +3,23 @@
 	#include <windows.h>
 	#include "GL\glee.h"
 	#include "GL\glu.h"
-	#include "sdl_image.h"
+	//#include "sdl_image.h"
 #endif
 
 #ifdef __APPLE__
-	#include <SDL_image/SDL_image.h>
 	#include <OpenGL/glu.h>
     #include <OpenGL/glext.h>
-#else
-	#include "SDL/SDL_image.h"
+#endif
+
+#ifdef __LINUX__
 	#include <GL/glew.h>
 #endif
 
 #include <string>
 #include <vector>
 #include <iostream>
+#include <SDL.h>
+#include "sdl_image.h"
 #include "MD5_Types.h"
 
 class Mesh {
@@ -30,7 +32,7 @@ public:
 	unsigned int normal_map;
 	void build_vertices(Joint* joints);
 	void build_normals();
-	void Draw();
+	void Draw(int prog);
 	void Draw_Vectors();
 	void load_textures();
 	unsigned int load_texture(std::string filename);
@@ -38,5 +40,3 @@ public:
 	int num_tris;
 	int num_weights;
 };
-
-extern int prog;
