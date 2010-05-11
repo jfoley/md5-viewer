@@ -32,7 +32,6 @@ bool right_down = false;
 
 Model_Manager model_manager;
 const char* MODEL_PATH = "models/hellknight";
-const char* SHADER_PATH = "shaders";
 
 using namespace std;
 

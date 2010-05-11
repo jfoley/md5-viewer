@@ -22,8 +22,7 @@ void Renderer::Init() {
 
 	quad = gluNewQuadric();
 	
-	prog = CreateShaderProg("shaders/bump.vert", 
-							"shaders/bump.frag");  // TODO: fix this
+	shader.Load_Shader_Program("bump");
 
 	zh=0.0;
 	Ylight=120;
