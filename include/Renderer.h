@@ -13,6 +13,7 @@
 #ifdef __LINUX__
 	#include <GL/glew.h>
 #endif
+#include <string>
 #include <SDL.h>
 #include <math.h>
 #include "Camera.h"
@@ -43,4 +44,5 @@ private:
 	bool draw_skeleton;
 	bool draw_vectors;
 	Camera cam;
+	Shader shader;
 };

@@ -14,39 +14,51 @@
 	#include <GL/glew.h>
 #endif
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
+#include <string>
+#include <iostream>
+#include <fstream>
 
-void ErrCheck(char* where);
+class Shader {
+public:
+	GLuint prog;
+	GLuint vert_shader, frag_shader;
+	void Load_Shader_Program(const char* name);
+	void Load_Shader_Program(const char* vert, const char* frag);
 
-void Fatal(const char* format , ...);
-//
-//  Read text file
-//
-char* ReadText(char *file);
+	void Load_Shader(const char* file, GLenum type);
 
-//
-//  Print Shader Log
-//
-void PrintShaderLog(int obj,char* file);
+	GLuint Compile(GLuint type, char const *source);
+};
 
+//void ErrCheck(char* where);
 //
-//  Print Program Log
+//void Fatal(const char* format , ...);
+////
+////  Read text file
+////
+//char* ReadText(char *file);
 //
-void PrintProgramLog(int obj);
-
+////
+////  Print Shader Log
+////
+//void PrintShaderLog(int obj,char* file);
 //
-//  Create Shader
+////
+////  Print Program Log
+////
+//void PrintProgramLog(int obj);
 //
-int CreateShader(GLenum type,char* file);
-
+////
+////  Create Shader
+////
+//int CreateShader(GLenum type,char* file);
 //
-//  Create Shader Program
+////
+////  Create Shader Program
+////
+//int CreateShaderProg(char* VertFile,char* FragFile);
 //
-int CreateShaderProg(char* VertFile,char* FragFile);
-
-//
-//  Create Shader Program with Location Names
-//
-int CreateShaderProgLoc(char* VertFile,char* FragFile,char* Name[]);
+////
+////  Create Shader Program with Location Names
+////
+//int CreateShaderProgLoc(char* VertFile,char* FragFile,char* Name[]);
