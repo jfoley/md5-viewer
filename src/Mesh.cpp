@@ -180,7 +180,7 @@ unsigned int Mesh::load_texture(std::string filename) {
 		error = glGetError();
 		if(error != GL_NO_ERROR) {
 			cout << gluErrorString(error) << endl;
-			exit(1);
+			//exit(1);
 		}
 		// Bind the texture object
 		glBindTexture( GL_TEXTURE_2D, image );
@@ -196,9 +196,9 @@ unsigned int Mesh::load_texture(std::string filename) {
 		error = glGetError();
 		if(error != GL_NO_ERROR) {
 			cout << gluErrorString(error) << endl;
-			exit(1);
+			//exit(1);
 		}
-		cout << "path: " << filename.c_str() << " id: " << image << endl;
+		//cout << "path: " << filename.c_str() << " id: " << image << endl;
 		//printf("SDL loaded image: '%s' .\n", filename);
 		//cache[stringFilename] = image;
 	} 
