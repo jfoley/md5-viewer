@@ -3,6 +3,22 @@ const char* SHADER_PATH = "./shaders/";
 const int MAX_FILE_LENGTH = 1024 * 10;
 using namespace std;
 
+int CreateShader(GLenum type,char* source)
+{
+   //  Create the shader
+   int shader = glCreateShader(type);
+   //  Load source code from file
+   //char* source = ReadText(file);
+   glShaderSource(shader,1,(const char**)&source,NULL);
+   //free(source);
+   //  Compile the shader
+   glCompileShader(shader);
+   //  Check for errors
+   //PrintShaderLog(shader,file);
+   //  Return name
+   return shader;
+}
+
 void Shader::Load_Shader_Program(const char *name) {
 	string vert = string(name).append(".vert");
 	string frag = string(name).append(".frag");
@@ -32,17 +48,21 @@ void Shader::Load_Shader_Program(const char *vert, const char *frag) {
 	vert_file.close();
 	frag_file.close();
 
-	vert_shader = Compile(GL_VERTEX_SHADER, vert_buffer);
-	frag_shader = Compile(GL_FRAGMENT_SHADER, frag_buffer);
+	//vert_shader = Compile(GL_VERTEX_SHADER, vert_buffer);
+	//frag_shader = Compile(GL_FRAGMENT_SHADER, frag_buffer);
+
+	vert_shader = CreateShader(GL_VERTEX_SHADER, vert_buffer);
+	frag_shader = CreateShader(GL_VERTEX_SHADER, frag_buffer);
 
 	prog = glCreateProgram();
     glAttachShader(prog, vert_shader);
     glAttachShader(prog, frag_shader);
     glLinkProgram(prog);
-	GLint length = 0;
-	glGetShaderiv(prog, GL_INFO_LOG_LENGTH, &length);
-    
-	if(length != 0) {
+	GLint status;
+	glGetShaderiv(prog, GL_LINK_STATUS, &status);
+	if(status == GL_FALSE) {
+		GLint length;
+		glGetShaderiv(prog, GL_INFO_LOG_LENGTH, &length);	
 		std::string log(length, ' ');
 		glGetShaderInfoLog(prog, length, &length, &log[0]);
 		throw std::logic_error(log);
@@ -64,10 +84,6 @@ GLuint Shader::Compile(GLuint type, char const *source) {
         return false;
     }
     return shader;
-}
-
-void Shader::Load_Shader(const char* file, GLenum type) {
-
 }
 
 //void ErrCheck(char* where)
@@ -151,21 +167,7 @@ void Shader::Load_Shader(const char* file, GLenum type) {
 ////
 ////  Create Shader
 ////
-//int CreateShader(GLenum type,char* file)
-//{
-//   //  Create the shader
-//   int shader = glCreateShader(type);
-//   //  Load source code from file
-//   char* source = ReadText(file);
-//   glShaderSource(shader,1,(const char**)&source,NULL);
-//   free(source);
-//   //  Compile the shader
-//   glCompileShader(shader);
-//   //  Check for errors
-//   PrintShaderLog(shader,file);
-//   //  Return name
-//   return shader;
-//}
+
 //
 ////
 ////  Create Shader Program

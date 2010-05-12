@@ -21,7 +21,7 @@ void Renderer::Init() {
 	glLoadIdentity();
 
 	quad = gluNewQuadric();
-	
+	glEnable(GL_TEXTURE_2D);
 	shader.Load_Shader_Program("bump");
 
 	zh=0.0;
@@ -76,7 +76,7 @@ void Renderer::Display(Model_Manager& model_manager) {
 
 	//  Enable lighting
 	show_lights();
-	glUseProgram(prog);
+	glUseProgram(shader.Get_Program());
 	glRotatef(-90, 1.0, 0.0, 0.0);
 	glRotatef(-90, 0.0, 0.0, 1.0);
 	if(draw_skeleton == true) {
@@ -84,7 +84,7 @@ void Renderer::Display(Model_Manager& model_manager) {
 		model_manager.Get_Model(0).Draw_Skeleton();	
 	}
 	else {
-		model_manager.Get_Model(0).Draw(prog);
+		model_manager.Get_Model(0).Draw(shader.Get_Program());
 	}
 	glUseProgram(0);
 	glDisable(GL_LIGHTING);
