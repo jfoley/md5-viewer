@@ -64,25 +64,8 @@
 		5206A5EE1190B7B100D7CD4A /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		5206A5F81190B7B100D7CD4A /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		5206A5F91190B7B100D7CD4A /* Tokenizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tokenizer.cpp; sourceTree = "<group>"; };
-		5206A6101190B7D000D7CD4A /* Anim_Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anim_Parser.h; sourceTree = "<group>"; };
-		5206A6111190B7D000D7CD4A /* Anim_Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anim_Types.h; sourceTree = "<group>"; };
-		5206A6121190B7D000D7CD4A /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
-		5206A6131190B7D000D7CD4A /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
-		5206A6141190B7D000D7CD4A /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
-		5206A6151190B7D000D7CD4A /* GLee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLee.h; sourceTree = "<group>"; };
-		5206A6161190B7D000D7CD4A /* md5_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5_parser.h; sourceTree = "<group>"; };
-		5206A6171190B7D000D7CD4A /* MD5_Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5_Parser.h; sourceTree = "<group>"; };
-		5206A6181190B7D000D7CD4A /* MD5_Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5_Types.h; sourceTree = "<group>"; };
-		5206A6191190B7D000D7CD4A /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5.h; sourceTree = "<group>"; };
-		5206A61A1190B7D000D7CD4A /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
-		5206A61B1190B7D000D7CD4A /* Quat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quat.h; sourceTree = "<group>"; };
-		5206A61C1190B7D000D7CD4A /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
-		5206A61D1190B7D000D7CD4A /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
-		5206A61E1190B7D000D7CD4A /* Tokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tokenizer.h; sourceTree = "<group>"; };
-		5206A61F1190B7D000D7CD4A /* Vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vec3.h; sourceTree = "<group>"; };
 		5206A6BF1192746500D7CD4A /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shaders; sourceTree = "<group>"; };
 		5206A6CE119274A700D7CD4A /* models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = models; sourceTree = "<group>"; };
-		52A993E6119366DA000E8856 /* Model_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Model_Manager.h; path = ../src/Model_Manager.h; sourceTree = "<group>"; };
 		52A993E7119366DA000E8856 /* Model_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model_Manager.cpp; sourceTree = "<group>"; };
 		52A9956311938E7A000E8856 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		52A9956711938E87000E8856 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = Library/Frameworks/SDL.framework; sourceTree = SDKROOT; };
@@ -202,23 +185,6 @@
 		5206A60E1190B7B700D7CD4A /* include */ = {
 			isa = PBXGroup;
 			children = (
-				52A993E6119366DA000E8856 /* Model_Manager.h */,
-				5206A6101190B7D000D7CD4A /* Anim_Parser.h */,
-				5206A6111190B7D000D7CD4A /* Anim_Types.h */,
-				5206A6121190B7D000D7CD4A /* Animation.h */,
-				5206A6131190B7D000D7CD4A /* Camera.h */,
-				5206A6141190B7D000D7CD4A /* Engine.h */,
-				5206A6151190B7D000D7CD4A /* GLee.h */,
-				5206A6161190B7D000D7CD4A /* md5_parser.h */,
-				5206A6171190B7D000D7CD4A /* MD5_Parser.h */,
-				5206A6181190B7D000D7CD4A /* MD5_Types.h */,
-				5206A6191190B7D000D7CD4A /* MD5.h */,
-				5206A61A1190B7D000D7CD4A /* Mesh.h */,
-				5206A61B1190B7D000D7CD4A /* Quat.h */,
-				5206A61C1190B7D000D7CD4A /* Shader.h */,
-				5206A61D1190B7D000D7CD4A /* Timer.h */,
-				5206A61E1190B7D000D7CD4A /* Tokenizer.h */,
-				5206A61F1190B7D000D7CD4A /* Vec3.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
