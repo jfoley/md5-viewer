@@ -115,18 +115,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 295323046;
-			PBXWorkspaceStateSaveDate = 295323046;
-		};
-		perUserProjectItems = {
-			52A996E91193C45A000E8856 = 52A996E91193C45A000E8856 /* PBXTextBookmark */;
-			52A996EB1193C45A000E8856 = 52A996EB1193C45A000E8856 /* PBXTextBookmark */;
-			52A996F011951A5D000E8856 = 52A996F011951A5D000E8856 /* PBXTextBookmark */;
-			52A996F111951A5D000E8856 = 52A996F111951A5D000E8856 /* PBXTextBookmark */;
-			52A996F211951A5D000E8856 = 52A996F211951A5D000E8856 /* PBXTextBookmark */;
-			52A996F311951A5D000E8856 = 52A996F311951A5D000E8856 /* PBXTextBookmark */;
-			52A996F411951A5D000E8856 = 52A996F411951A5D000E8856 /* PBXTextBookmark */;
-			52A996F511951A5D000E8856 = 52A996F511951A5D000E8856 /* PBXTextBookmark */;
+			PBXPerProjectTemplateStateSaveDate = 295505272;
+			PBXWorkspaceStateSaveDate = 295505272;
 		};
 		sourceControlManager = 5206A5C31190B65000D7CD4A /* Source Control */;
 		userBuildSettings = {
@@ -313,20 +303,6 @@
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
-	52A993E6119366DA000E8856 /* Model_Manager.h */ = {
-		isa = PBXFileReference;
-		fileEncoding = 4;
-		lastKnownFileType = sourcecode.c.h;
-		name = Model_Manager.h;
-		path = /Users/john/Documents/Projects/advanced_graphics/md5_viewer/src/Model_Manager.h;
-		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {971, 477}}";
-			sepNavSelRange = "{357, 0}";
-			sepNavVisRange = "{0, 396}";
-			sepNavWindowFrame = "{{153, 89}, {750, 558}}";
-		};
-	};
 	52A993E7119366DA000E8856 /* Model_Manager.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {954, 663}}";
@@ -406,13 +382,6 @@
 		modificationTime = 294896727.957363;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
-	};
-	52A996891193C10F000E8856 /* stl_vector.h */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.h;
-		name = stl_vector.h;
-		path = "/Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/bits/stl_vector.h";
-		sourceTree = "<absolute>";
 	};
 	52A996CD1193C372000E8856 /* main.cpp:87 */ = {
 		isa = PBXFileBreakpoint;
@@ -502,83 +471,6 @@
 		modificationTime = 294896802.135354;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
-	};
-	52A996E91193C45A000E8856 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5206A5EA1190B7B100D7CD4A /* main.cpp */;
-		name = "main.cpp: 229";
-		rLen = 0;
-		rLoc = 3298;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 3298;
-	};
-	52A996EB1193C45A000E8856 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 52A993E6119366DA000E8856 /* Model_Manager.h */;
-		name = "Model_Manager.h: 20";
-		rLen = 0;
-		rLoc = 357;
-		rType = 0;
-		vrLen = 396;
-		vrLoc = 0;
-	};
-	52A996F011951A5D000E8856 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 52A996891193C10F000E8856 /* stl_vector.h */;
-		name = "stl_vector.h: 478";
-		rLen = 0;
-		rLoc = 16903;
-		rType = 0;
-		vrLen = 1280;
-		vrLoc = 16275;
-	};
-	52A996F111951A5D000E8856 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 52A993E7119366DA000E8856 /* Model_Manager.cpp */;
-		name = "Model_Manager.cpp: 43";
-		rLen = 0;
-		rLoc = 979;
-		rType = 0;
-		vrLen = 895;
-		vrLoc = 230;
-	};
-	52A996F211951A5D000E8856 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5206A5EC1190B7B100D7CD4A /* MD5.cpp */;
-		name = "MD5.cpp: 24";
-		rLen = 0;
-		rLoc = 320;
-		rType = 0;
-		vrLen = 647;
-		vrLoc = 57;
-	};
-	52A996F311951A5D000E8856 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5206A5E51190B7B100D7CD4A /* Anim_Parser.cpp */;
-		name = "Anim_Parser.cpp: 15";
-		rLen = 0;
-		rLoc = 238;
-		rType = 0;
-		vrLen = 711;
-		vrLoc = 133;
-	};
-	52A996F411951A5D000E8856 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5206A5E61190B7B100D7CD4A /* Animation.cpp */;
-		rLen = 0;
-		rLoc = 7;
-		rType = 1;
-	};
-	52A996F511951A5D000E8856 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5206A5E61190B7B100D7CD4A /* Animation.cpp */;
-		name = "Animation.cpp: 8";
-		rLen = 0;
-		rLoc = 138;
-		rType = 0;
-		vrLen = 876;
-		vrLoc = 0;
 	};
 	8D1107260486CEB800E47090 /* md5_viewer */ = {
 		activeExec = 0;

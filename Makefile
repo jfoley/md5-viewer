@@ -11,16 +11,18 @@ else
     SDL_INC= `sdl-config --cflags`
     SDL_LIB= `sdl-config --libs`
 endif
-
+BOOST_LIBS = -L/usr/local/lib -lboost_system -lboost_filesystem
 # object files have corresponding source files
 ODIR= Debug
 SRCDIR= src
-OBJS= main.o MD5.o Mesh.o Tokenizer.o GLee.o Camera.o Engine.o Timer.o Shader.o Animation.o MD5_Parser.o Anim_Parser.o
+OBJS= main.o MD5.o Mesh.o Tokenizer.o GLee.o Camera.o Engine.o Timer.o\
+Shader.o Animation.o MD5_Parser.o Anim_Parser.o Renderer.o Model_Manager.o
+
 _OBJ = $(patsubst %,$(ODIR)/%,$(OBJS))
 CXX=g++
 COMPILER_FLAGS= -Wall
 INCLUDE= $(SDL_INC) $(OPENGL_INC) -I./include
-LIBS= $(SDL_LIB) $(OPENGL_LIB)
+LIBS= $(SDL_LIB) $(OPENGL_LIB) $(BOOST_LIBS)
 
 EXEC= md5_viewer
 

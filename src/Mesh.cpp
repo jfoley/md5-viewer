@@ -2,7 +2,8 @@
 using namespace std;
 
 Mesh::Mesh() {
-	shader_prog.Load_Shader_Program(string("bump"));	
+	string shader_name = string("bump");
+	shader_prog.Load_Shader_Program(shader_name);	
 }
 
 void Mesh::Build_Normals() {

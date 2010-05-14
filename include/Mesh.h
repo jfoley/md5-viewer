@@ -3,12 +3,13 @@
 	#include <windows.h>
 	#include "GL\glee.h"
 	#include "GL\glu.h"
-	//#include "sdl_image.h"
+	#include "sdl_image.h"
 #endif
 
 #ifdef __APPLE__
 	#include <OpenGL/glu.h>
     #include <OpenGL/glext.h>
+	#include "SDL_image/SDL_image.h"
 #endif
 
 #ifdef __LINUX__
@@ -18,8 +19,9 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <stdexcept>
+
 #include <SDL.h>
-#include "sdl_image.h"
 #include "MD5_Types.h"
 #include "Shader.h"
 class Mesh {
