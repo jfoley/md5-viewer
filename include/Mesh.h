@@ -21,22 +21,32 @@
 #include <SDL.h>
 #include "sdl_image.h"
 #include "MD5_Types.h"
-
+#include "Shader.h"
 class Mesh {
 public:
+	Mesh();
+
+	unsigned int texture;
+	unsigned int normal_map;
+	void Draw();
+	void Draw_Vectors();
+	void Build_Vertices(Joint* joints);
+	void Build_Normals();
+	void Load_Textures();
+
+private:
+	Shader shader_prog;
+
 	std::string shader;
 	std::vector<Vertex> verts;
 	std::vector<Triangle> tris;
 	std::vector<Weight> weights;
-	unsigned int texture;
-	unsigned int normal_map;
-	void build_vertices(Joint* joints);
-	void build_normals();
-	void Draw(int prog);
-	void Draw_Vectors();
-	void load_textures();
-	unsigned int load_texture(std::string filename);
+	
 	int num_verts;
 	int num_tris;
 	int num_weights;
+
+	
+	unsigned int load_texture(std::string filename);
+	friend class MD5_Parser;
 };

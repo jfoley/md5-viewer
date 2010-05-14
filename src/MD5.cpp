@@ -19,7 +19,7 @@ void MD5::Load(string filename)
 	parser.Load(filename);
 	parser.Parse();
 	for(int i = 0; i < this->meshes.size(); i++) {
-		meshes[i].load_textures();
+		meshes[i].Load_Textures();
 	}
 }
 
@@ -33,13 +33,13 @@ void MD5::LoadAnimation(string filename) {
 
 void MD5::Build(int frame) {
 	for(size_t i = 0; i < 1; i++) {
-		meshes[i].build_vertices(current_anim()->Get_Frame(frame));
-		meshes[i].build_normals();
+		meshes[i].Build_Vertices(current_anim()->Get_Frame(frame));
+		meshes[i].Build_Normals();
 	}
 }
 
-void MD5::Draw(int prog) {
-	meshes[0].Draw(prog);
+void MD5::Draw() {
+	meshes[0].Draw();
 }
 
 void MD5::Draw_Skeleton() {

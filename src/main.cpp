@@ -72,7 +72,7 @@ void mouse_click(SDL_MouseButtonEvent* event) {
 
 void mouse_move(SDL_MouseMotionEvent* event) {
 	if ( left_down ) {
-		renderer.camera().rotate(Vec3(event->xrel * 0.1, event->yrel * 0.1, 0));
+		renderer.camera().rotate(Vec3(event->yrel * 0.1, event->xrel * 0.1, 0));
 	}
 
 	if ( right_down ) {

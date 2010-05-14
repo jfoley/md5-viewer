@@ -16,9 +16,9 @@
 #include <string>
 #include <SDL.h>
 #include <math.h>
+#include <stdexcept>
 #include "Camera.h"
 #include "Model_Manager.h"
-#include "Shader.h"
 
 class Renderer {
 public:
@@ -44,5 +44,4 @@ private:
 	bool draw_skeleton;
 	bool draw_vectors;
 	Camera cam;
-	Shader shader;
 };
