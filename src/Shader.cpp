@@ -3,75 +3,68 @@ const char* SHADER_PATH = "./shaders/";
 const int MAX_FILE_LENGTH = 1024 * 10;
 using namespace std;
 
-int CreateShader(GLenum type,char* source)
+int CreateShader(GLenum type, string &source)
 {
-   //  Create the shader
-   int shader = glCreateShader(type);
-   //  Load source code from file
-   //char* source = ReadText(file);
-   glShaderSource(shader,1,(const char**)&source,NULL);
-   //free(source);
-   //  Compile the shader
-   glCompileShader(shader);
-   //  Check for errors
-   //PrintShaderLog(shader,file);
-   //  Return name
-   return shader;
+	int shader = glCreateShader(type);
+
+	const char* source_ptr = source.c_str();
+	const char** source_ptr_ptr = &source_ptr;
+
+	const char** test = (const char**) &(source_ptr);
+	glShaderSource(shader, 1, (const char**) &(source_ptr), NULL);
+	glCompileShader(shader);
+
+	GLint compiled;
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
+	if (!compiled) {
+		GLint length;
+		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
+		std::string log(length, ' ');
+		glGetShaderInfoLog(shader, length, &length, &log[0]);
+		throw std::logic_error(log);
+		return -1;
+	}
+	return shader;
 }
 
-void Shader::Load_Shader_Program(const char *name) {
+void Shader::Load_Shader_Program(std::string &name) {
 	string vert = string(name).append(".vert");
 	string frag = string(name).append(".frag");
-	this->Load_Shader_Program(vert.c_str(), frag.c_str());
+	this->Load_Shader_Program(vert, frag);
 }
 
-void Shader::Load_Shader_Program(const char *vert, const char *frag) {
+void Shader::Load_Shader_Program(string &vert, string &frag) {
 	string vert_path = string(SHADER_PATH).append(vert);
 	string frag_path = string(SHADER_PATH).append(frag);
 
-	ifstream vert_file = ifstream(vert_path.c_str());
-	ifstream frag_file = ifstream(frag_path.c_str());
+	string vert_source;
+	string frag_source;
+		
+	vert_source = Read_Source(vert_path);
+	frag_source = Read_Source(frag_path);
 
-	vert_file.seekg(0, ios::end);
-	int vert_length = vert_file.tellg();
-	vert_file.seekg(0, ios::beg);
 
-	frag_file.seekg(0, ios::end);
-	int frag_length = frag_file.tellg();
-	frag_file.seekg(0, ios::beg);
-
-	char vert_buffer[MAX_FILE_LENGTH];
-	char frag_buffer[MAX_FILE_LENGTH];
-
-	vert_file.read(vert_buffer, vert_length);
-	vert_file.read(frag_buffer, frag_length);
-	vert_file.close();
-	frag_file.close();
-
-	//vert_shader = Compile(GL_VERTEX_SHADER, vert_buffer);
-	//frag_shader = Compile(GL_FRAGMENT_SHADER, frag_buffer);
-
-	vert_shader = CreateShader(GL_VERTEX_SHADER, vert_buffer);
-	frag_shader = CreateShader(GL_VERTEX_SHADER, frag_buffer);
+	vert_shader = CreateShader(GL_VERTEX_SHADER, vert_source);
+	frag_shader = CreateShader(GL_FRAGMENT_SHADER, frag_source);
 
 	prog = glCreateProgram();
     glAttachShader(prog, vert_shader);
     glAttachShader(prog, frag_shader);
     glLinkProgram(prog);
 	GLint status;
-	glGetShaderiv(prog, GL_LINK_STATUS, &status);
+	glGetProgramiv(prog, GL_LINK_STATUS, &status);
 	if(status == GL_FALSE) {
 		GLint length;
-		glGetShaderiv(prog, GL_INFO_LOG_LENGTH, &length);	
+		glGetProgramiv(prog, GL_INFO_LOG_LENGTH, &length);	
 		std::string log(length, ' ');
-		glGetShaderInfoLog(prog, length, &length, &log[0]);
+		glGetProgramInfoLog(prog, length, &length, &log[0]);
 		throw std::logic_error(log);
 	}
 }
 
-GLuint Shader::Compile(GLuint type, char const *source) {
+GLuint Shader::Compile(GLuint type, string &source) {
 	GLuint shader = glCreateShader(type);
-    glShaderSource(shader, 1, &source, NULL);
+	glShaderSource(shader, 1, (const char**)source.c_str(), NULL);
     glCompileShader(shader);
     GLint compiled;
     glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
@@ -84,6 +77,22 @@ GLuint Shader::Compile(GLuint type, char const *source) {
         return false;
     }
     return shader;
+}
+
+string Shader::Read_Source(string &filename) {
+	ifstream shader_file(filename.c_str());
+	if(!shader_file.is_open()) {
+		throw std::invalid_argument(filename);
+	}
+	string shader_source;
+
+	shader_file.seekg(0, ios::end);   
+	shader_source.reserve(shader_file.tellg());
+	shader_file.seekg(0, ios::beg);
+
+	shader_source.assign((istreambuf_iterator<char>(shader_file)),
+						  istreambuf_iterator<char>());
+	return shader_source;
 }
 
 //void ErrCheck(char* where)

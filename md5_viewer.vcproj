@@ -183,6 +183,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\GLSLShader.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\main.cpp"
 				>
 			</File>
@@ -246,6 +250,10 @@
 			</File>
 			<File
 				RelativePath=".\include\GLee.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\GLSLShader.h"
 				>
 			</File>
 			<File

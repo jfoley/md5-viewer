@@ -17,16 +17,17 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 class Shader {
 public:
-	void Load_Shader_Program(const char* name);
-	void Load_Shader_Program(const char* vert, const char* frag);
+	void Load_Shader_Program(std::string &name);
+	void Load_Shader_Program(std::string &vert, std::string &frag);
 	int Get_Program() const {return prog;}
 private:
-	GLuint prog;
-	GLuint vert_shader, frag_shader;
-	GLuint Compile(GLuint type, char const *source);
+	GLuint prog, vert_shader, frag_shader;
+	GLuint Compile(GLuint type, std::string &source);
+	std::string Read_Source(std::string &filename);
 };
 
 //void ErrCheck(char* where);

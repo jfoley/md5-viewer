@@ -2,6 +2,7 @@
 
 #define Cos(th) cos(3.1415926/180*(th))
 #define Sin(th) sin(3.1415926/180*(th))
+using namespace std;
 
 void Renderer::Init() {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -22,8 +23,6 @@ void Renderer::Init() {
 
 	quad = gluNewQuadric();
 	glEnable(GL_TEXTURE_2D);
-	shader.Load_Shader_Program("bump");
-
 	zh=0.0;
 	Ylight=120;
 }
@@ -74,21 +73,21 @@ void Renderer::Display(Model_Manager& model_manager) {
 	glRotatef(cam.rot.x, 1.0, 0.0, 0.0);
 	glRotatef(cam.rot.y, 0.0, 1.0, 0.0);
 
+	glColor3f(1.0, 1.0, 1.0);
 	//  Enable lighting
 	show_lights();
-	glUseProgram(shader.Get_Program());
 	glRotatef(-90, 1.0, 0.0, 0.0);
 	glRotatef(-90, 0.0, 0.0, 1.0);
 	if(draw_skeleton == true) {
-		glUseProgram(0);
+		//glUseProgram(0);
 		model_manager.Get_Model(0).Draw_Skeleton();	
 	}
 	else {
-		model_manager.Get_Model(0).Draw(shader.Get_Program());
+		model_manager.Get_Model(0).Draw();
 	}
 	glUseProgram(0);
-	glDisable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);
+	//glDisable(GL_LIGHTING);
+	//glDisable(GL_TEXTURE_2D);
 	
 	if(draw_vectors == true) {
 		model_manager.Get_Model(0).Draw_Vectors();

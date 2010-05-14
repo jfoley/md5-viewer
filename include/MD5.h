@@ -17,13 +17,14 @@ public:
 	void Load(std::string filename);
 	void LoadAnimation(std::string filename);
 	void Build(int frame);
-	void Draw(int prog);
-	void Draw_Vectors();
 	void Draw_Skeleton();
 	void Next_Frame();
 	void Next_Animation();
-	
+	void Draw();
+	void Draw_Vectors();
+
 protected:
+	
 	inline Animation* current_anim() { return &animations[anim_index]; }
 	int anim_index;
 	int current_frame;
