@@ -4,14 +4,14 @@ ifeq ($(MACHINE),Darwin)
     OPENGL_INC= -FOpenGL
     OPENGL_LIB= -framework OpenGL
     SDL_INC= `sdl-config --cflags`
-    SDL_LIB= `sdl-config --libs` -framework SDL_image
+    SDL_LIB= `sdl-config --libs` -lSDL_image
 else
     OPENGL_INC= -I/usr/X11R6/include
     OPENGL_LIB= -I/usr/lib64 -lGL -lGLU -lGLEW -lSDL_image
     SDL_INC= `sdl-config --cflags`
     SDL_LIB= `sdl-config --libs`
 endif
-BOOST_LIBS = -L/usr/local/lib -lboost_system -lboost_filesystem
+BOOST_LIBS = -L/usr/local/lib -lboost_system-mt -lboost_filesystem-mt
 # object files have corresponding source files
 ODIR= Debug
 SRCDIR= src

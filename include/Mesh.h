@@ -9,7 +9,7 @@
 #ifdef __APPLE__
 	#include <OpenGL/glu.h>
     #include <OpenGL/glext.h>
-	#include "SDL_image/SDL_image.h"
+	#include "SDL_image.h"
 #endif
 
 #ifdef __LINUX__
